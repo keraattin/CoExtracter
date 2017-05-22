@@ -24,5 +24,8 @@ os.system('pwd')
 os.system('ls')
 
 fileName = input('{0}Enter your file name \nEx : example.txt \nFile name : '.format(color.BOLD))
+filePath = path+'/'+fileName
+file = open(filePath,"r")
 
-
+read = file.read()
+print(read)
