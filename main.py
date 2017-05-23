@@ -70,4 +70,3 @@ while inputLine:
 
 inputFile.close() #inputFile closed
 outputFile.close() #outputFile closed
-
