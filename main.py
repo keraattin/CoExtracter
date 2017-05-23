@@ -24,7 +24,6 @@ os.system('pwd')
 os.system('ls')
 
 
-
 inputFileName = input('{0}Enter your file name \nEx : example.txt \nFile name : '.format(color.BOLD))
 inputFilePath = inputPath+'/'+inputFileName
 inputFile = open(inputFilePath,"r",encoding="utf-8")
@@ -35,6 +34,7 @@ while inputLine:
         head, inputText = inputLine.split("//TODO")
         print(inputText)
     inputLine = inputFile.readline()
-inputFile.close()
+
+inputFile.close() #inputFile closed
 
 
