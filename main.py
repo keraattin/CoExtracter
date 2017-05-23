@@ -59,8 +59,6 @@ if isOutputPathEmpty is True:
 else:
     outputFilePath = outputPath+'/'+outputFileName
 
-
-
 inputFile = open(inputFilePath,"r",encoding="utf-8")
 outputFile = open(outputFilePath,"a",encoding="utf-8")
 inputLine = inputFile.readline()
