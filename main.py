@@ -17,15 +17,25 @@ class color:
     UNDERLINE = '\033[4m'
     END = '\033[0m'
 
-path = input('{0}Enter the path of your file \nEx : /home/myHome/Desktop/myFile/ \nPath : '.format(color.BOLD))
+inputPath = input('{0}Enter the path of your file \nEx : /home/myHome/Desktop/myFile/ \nPath : '.format(color.BOLD))
 
-os.chdir(path)
+os.chdir(inputPath)
 os.system('pwd')
 os.system('ls')
 
-fileName = input('{0}Enter your file name \nEx : example.txt \nFile name : '.format(color.BOLD))
-filePath = path+'/'+fileName
-file = open(filePath,"r")
 
-read = file.read()
-print(read)
+
+inputFileName = input('{0}Enter your file name \nEx : example.txt \nFile name : '.format(color.BOLD))
+inputFilePath = inputPath+'/'+inputFileName
+inputFile = open(inputFilePath,"r",encoding="utf-8")
+
+readInput = inputFile.readline()
+if(readInput.startswith("//TODO") == 1):
+    head,inputText = readInput.split("//TODO")
+    print(inputText)
+else:
+     print("False")
+
+
+
+
