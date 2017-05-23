@@ -23,18 +23,29 @@ os.chdir(inputPath)
 os.system('pwd')
 os.system('ls')
 
-
 inputFileName = input('{0}Enter your file name \nEx : example.txt \nFile name : '.format(color.BOLD))
 inputFilePath = inputPath+'/'+inputFileName
-inputFile = open(inputFilePath,"r",encoding="utf-8")
 
+
+outputPath = input('{0}Enter the path of you want to extract file \nEx : /home/myHome/Desktop/myFile/ \nPath : '.format(color.BOLD))
+
+os.chdir(outputPath)
+os.system('pwd')
+os.system('ls')
+
+outputFileName = input('{0}Enter your file name of you want to extract \nEx : example.txt \nFile name : '.format(color.BOLD))
+outputFilePath = outputPath+'/'+outputFileName
+
+
+inputFile = open(inputFilePath,"r",encoding="utf-8")
+outputFile = open(outputFilePath,"a",encoding="utf-8")
 inputLine = inputFile.readline()
 while inputLine:
     if (inputLine.startswith("//TODO") == 1):
         head, inputText = inputLine.split("//TODO")
-        print(inputText)
+        outputFile.writelines(inputText)
     inputLine = inputFile.readline()
 
 inputFile.close() #inputFile closed
-
+outputFile.close() #outputFile closed
 
