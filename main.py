@@ -17,56 +17,61 @@ class color:
     UNDERLINE = '\033[4m'
     END = '\033[0m'
 
-searchWord = input('Enter the word you want to search (Default : "//TODO") : ')
-if not searchWord:
-    searchWord = "//TODO"
+
+def main():
+    searchWord = input('Enter the word you want to search (Default : "//TODO") : ')
+    if not searchWord:
+        searchWord = "//TODO"
 
 
-isInputPathEmpty = True
-inputPath = input('{0}Enter the path of your file \nEx : /home/myHome/Desktop/myFile/ \nPath (Enter for Default:working directory) : '.format(color.BOLD))
-if not inputPath:
-    os.system('pwd')
-    os.system('ls')
     isInputPathEmpty = True
-else:
-    os.chdir(inputPath)
-    os.system('pwd')
-    os.system('ls')
-    isInputPathEmpty = False
+    inputPath = input('{0}Enter the path of your file \nEx : /home/myHome/Desktop/myFile/ \nPath (Enter for Default:working directory) : '.format(color.BOLD))
+    if not inputPath:
+        os.system('pwd')
+        os.system('ls')
+        isInputPathEmpty = True
+    else:
+        os.chdir(inputPath)
+        os.system('pwd')
+        os.system('ls')
+        isInputPathEmpty = False
 
-inputFileName = input('{0}Enter your file name \nEx : example.txt \nFile name : '.format(color.BOLD))
-if isInputPathEmpty is True:
-    inputFilePath = inputFileName
-else:
-    inputFilePath = inputPath+'/'+inputFileName
+    inputFileName = input('{0}Enter your file name \nEx : example.txt \nFile name : '.format(color.BOLD))
+    if isInputPathEmpty is True:
+        inputFilePath = inputFileName
+    else:
+        inputFilePath = inputPath+'/'+inputFileName
 
 
-isOutputPathEmpty = True
-outputPath = input('{0}Enter the path of you want to extract file \nEx : /home/myHome/Desktop/myFile/ \nPath : '.format(color.BOLD))
-if not outputPath:
-    os.system('pwd')
-    os.system('ls')
     isOutputPathEmpty = True
-else:
-    os.chdir(outputPath)
-    os.system('pwd')
-    os.system('ls')
-    isOutputPathEmpty = False
+    outputPath = input('{0}Enter the path of you want to extract file \nEx : /home/myHome/Desktop/myFile/ \nPath : '.format(color.BOLD))
+    if not outputPath:
+        os.system('pwd')
+        os.system('ls')
+        isOutputPathEmpty = True
+    else:
+        os.chdir(outputPath)
+        os.system('pwd')
+        os.system('ls')
+        isOutputPathEmpty = False
 
-outputFileName = input('{0}Enter your file name of you want to extract \nEx : example.txt \nFile name : '.format(color.BOLD))
-if isOutputPathEmpty is True:
-    outputFilePath = outputFileName
-else:
-    outputFilePath = outputPath+'/'+outputFileName
+    outputFileName = input('{0}Enter your file name of you want to extract \nEx : example.txt \nFile name : '.format(color.BOLD))
+    if isOutputPathEmpty is True:
+        outputFilePath = outputFileName
+    else:
+        outputFilePath = outputPath+'/'+outputFileName
 
-inputFile = open(inputFilePath,"r",encoding="utf-8")
-outputFile = open(outputFilePath,"a",encoding="utf-8")
-inputLine = inputFile.readline()
-while inputLine:
-    if (inputLine.startswith(searchWord) == 1):
-        head, inputText = inputLine.split(searchWord)
-        outputFile.writelines(inputText)
+    inputFile = open(inputFilePath,"r",encoding="utf-8")
+    outputFile = open(outputFilePath,"a",encoding="utf-8")
     inputLine = inputFile.readline()
+    while inputLine:
+        if (inputLine.startswith(searchWord) == 1):
+            head, inputText = inputLine.split(searchWord)
+            outputFile.writelines(inputText)
+        inputLine = inputFile.readline()
 
-inputFile.close() #inputFile closed
-outputFile.close() #outputFile closed
+    inputFile.close() #inputFile closed
+    outputFile.close() #outputFile closed
+
+if __name__ == "__main__":
+    main() #Calling main
