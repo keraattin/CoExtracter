@@ -29,13 +29,12 @@ inputFileName = input('{0}Enter your file name \nEx : example.txt \nFile name : 
 inputFilePath = inputPath+'/'+inputFileName
 inputFile = open(inputFilePath,"r",encoding="utf-8")
 
-readInput = inputFile.readline()
-if(readInput.startswith("//TODO") == 1):
-    head,inputText = readInput.split("//TODO")
-    print(inputText)
-else:
-     print("False")
-
-
+inputLine = inputFile.readline()
+while inputLine:
+    if (inputLine.startswith("//TODO") == 1):
+        head, inputText = inputLine.split("//TODO")
+        print(inputText)
+    inputLine = inputFile.readline()
+inputFile.close()
 
 
