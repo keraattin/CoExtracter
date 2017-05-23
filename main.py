@@ -17,6 +17,11 @@ class color:
     UNDERLINE = '\033[4m'
     END = '\033[0m'
 
+searchWord = input('Enter the word you want to search (Default : "//TODO") : ')
+if not searchWord:
+    searchWord = "//TODO"
+
+
 isInputPathEmpty = True
 inputPath = input('{0}Enter the path of your file \nEx : /home/myHome/Desktop/myFile/ \nPath (Enter for Default:working directory) : '.format(color.BOLD))
 if not inputPath:
@@ -60,8 +65,8 @@ inputFile = open(inputFilePath,"r",encoding="utf-8")
 outputFile = open(outputFilePath,"a",encoding="utf-8")
 inputLine = inputFile.readline()
 while inputLine:
-    if (inputLine.startswith("//TODO") == 1):
-        head, inputText = inputLine.split("//TODO")
+    if (inputLine.startswith(searchWord) == 1):
+        head, inputText = inputLine.split(searchWord)
         outputFile.writelines(inputText)
     inputLine = inputFile.readline()
 
