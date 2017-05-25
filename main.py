@@ -60,7 +60,6 @@ def mainWithNoArgs():
     else:
         outputFilePath = outputPath+'/'+outputFileName
 
-
     inputFile = open(inputFilePath,"r",encoding="utf-8")
     outputFile = open(outputFilePath,"a",encoding="utf-8")
     inputLine = inputFile.readline()
@@ -90,7 +89,6 @@ def commandLineMain(inputFileArg,outputFileArg,searchWordArg):
     outputFile.close() #outputFile closed
     print("Successful!")
     sys.exit()
-
 
 if __name__ == "__main__":
     main() #Calling main
