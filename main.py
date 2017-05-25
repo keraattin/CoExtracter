@@ -3,6 +3,7 @@
 
 import os
 import sys
+import getopt
 from subprocess import call
 
 class color:
@@ -89,5 +90,45 @@ def commandLineMain(inputFileArg,outputFileArg,searchWordArg):
     print("Successful!")
     sys.exit()
 
+def serachWordDefault(inputFileArg,outputFileArg):
+    print("input : "+inputFileArg)
+    print("output : "+outputFileArg)
+    searchWord = '//TODO'
+    inputFile = open(inputFileArg,"r",encoding="utf-8")
+    outputFile = open(outputFileArg,"a",encoding="utf-8")
+    inputLine = inputFile.readline()
+    while inputLine:
+        if (inputLine.startswith(searchWord) == 1):
+            head, inputText = inputLine.split(searchWord)
+            outputFile.writelines(inputText)
+        inputLine = inputFile.readline()
+
+    inputFile.close() #inputFile closed
+    outputFile.close() #outputFile closed
+    print("Successful!")
+    sys.exit()
+
+
+def usage():
+    print("usage: python3.5 main.py -i <inputFile> -o <outputFile>")
+
+def main(argv):
+   inputfile = ''
+   outputfile = ''
+   try:
+      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+   except getopt.GetoptError:
+      usage()
+      sys.exit(2)
+   for opt, arg in opts:
+      if opt == '-h':
+         usage()
+         sys.exit()
+      elif opt in ("-i", "--ifile"):
+         inputfile = arg
+      elif opt in ("-o", "--ofile"):
+         outputfile = arg
+   serachWordDefault(inputFileArg=inputfile,outputFileArg=outputfile)
+
 if __name__ == "__main__":
-    main() #Calling main
+    main(sys.argv[1:]) #Calling main
