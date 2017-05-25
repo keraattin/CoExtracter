@@ -17,7 +17,6 @@ class color:
     UNDERLINE = '\033[4m'
     END = '\033[0m'
 
-
 def mainWithNoArgs():
     searchWord = input('Enter the word you want to search (Default : "//TODO") : ')
     if not searchWord:
