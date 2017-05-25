@@ -18,11 +18,10 @@ class color:
     END = '\033[0m'
 
 
-def main():
+def mainWithNoArgs():
     searchWord = input('Enter the word you want to search (Default : "//TODO") : ')
     if not searchWord:
         searchWord = "//TODO"
-
 
     isInputPathEmpty = True
     inputPath = input('{0}Enter the path of your file \nEx : /home/myHome/Desktop/myFile/ \nPath (Enter for Default:working directory) : '.format(color.BOLD))
@@ -61,6 +60,7 @@ def main():
     else:
         outputFilePath = outputPath+'/'+outputFileName
 
+
     inputFile = open(inputFilePath,"r",encoding="utf-8")
     outputFile = open(outputFilePath,"a",encoding="utf-8")
     inputLine = inputFile.readline()
@@ -72,6 +72,25 @@ def main():
 
     inputFile.close() #inputFile closed
     outputFile.close() #outputFile closed
+
+def commandLineMain(inputFileArg,outputFileArg,searchWordArg):
+    print("input : "+inputFileArg)
+    print("output : "+outputFileArg)
+    print("searchWord : "+searchWordArg)
+    inputFile = open(inputFileArg,"r",encoding="utf-8")
+    outputFile = open(outputFileArg,"a",encoding="utf-8")
+    inputLine = inputFile.readline()
+    while inputLine:
+        if (inputLine.startswith(searchWordArg) == 1):
+            head, inputText = inputLine.split(searchWordArg)
+            outputFile.writelines(inputText)
+        inputLine = inputFile.readline()
+
+    inputFile.close() #inputFile closed
+    outputFile.close() #outputFile closed
+    print("Successful!")
+    sys.exit()
+
 
 if __name__ == "__main__":
     main() #Calling main
