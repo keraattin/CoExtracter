@@ -72,7 +72,7 @@ def mainWithNoArgs():
     inputFile.close() #inputFile closed
     outputFile.close() #outputFile closed
 
-def commandLineMain(inputFileArg,outputFileArg,searchWordArg):
+def commandLineSearch(inputFileArg,outputFileArg,searchWordArg):
     print("input : "+inputFileArg)
     print("output : "+outputFileArg)
     print("searchWord : "+searchWordArg)
@@ -90,7 +90,7 @@ def commandLineMain(inputFileArg,outputFileArg,searchWordArg):
     print("Successful!")
     sys.exit()
 
-def serachWordDefault(inputFileArg,outputFileArg):
+def searchWordDefault(inputFileArg,outputFileArg):
     print("input : "+inputFileArg)
     print("output : "+outputFileArg)
     searchWord = '//TODO'
@@ -110,13 +110,14 @@ def serachWordDefault(inputFileArg,outputFileArg):
 
 
 def usage():
-    print("usage: python3.5 main.py -i <inputFile> -o <outputFile>")
+    print("usage: python3.5 main.py -i <inputFile> -o <outputFile> -s <searchWord>")
 
 def main(argv):
    inputfile = ''
    outputfile = ''
+   searchword = ''
    try:
-      opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
+      opts, args = getopt.getopt(argv,"hi:o:s:",["ifile=","ofile=","sword="])
    except getopt.GetoptError:
       usage()
       sys.exit(2)
@@ -128,7 +129,10 @@ def main(argv):
          inputfile = arg
       elif opt in ("-o", "--ofile"):
          outputfile = arg
-   serachWordDefault(inputFileArg=inputfile,outputFileArg=outputfile)
+      elif opt in ("-s", "--sword"):
+         searchword = arg
+   commandLineSearch(inputFileArg=inputfile,outputFileArg=outputfile,searchWordArg=searchword)
+   #searchWordDefault(inputFileArg=inputfile,outputFileArg=outputfile)
 
 if __name__ == "__main__":
     main(sys.argv[1:]) #Calling main

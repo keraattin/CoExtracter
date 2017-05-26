@@ -5,3 +5,5 @@
  line6
  line1
  line3
+ line1
+ line3
