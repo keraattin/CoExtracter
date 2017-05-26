@@ -122,7 +122,7 @@ def main(argv):
       usage()
       sys.exit(2)
    for opt, arg in opts:
-      if opt == '-h':
+      if opt in ("-h","--help"):
          usage()
          sys.exit()
       elif opt in ("-i", "--ifile"):
