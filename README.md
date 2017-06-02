@@ -3,18 +3,23 @@ Comment Extracter with python
 
 # Usage
 
-- for help :
+- Usage
+
+```
+  python3.5 main.py -i <inputFile> -o <outputFile> -s <searchWord>
+```
+
+- For help :
 
 ```
   python3.5 main.py --help
 ```
 
-
 ```
   python3.5 main.py -h
 ```
 
-- keywords
+- kKeywords
 
 ```
   -i , --ifile = this means name of your input file
