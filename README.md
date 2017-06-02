@@ -19,10 +19,16 @@ Comment Extracter with python
   python3.5 main.py -h
 ```
 
-- kKeywords
+- Keywords
 
 ```
   -i , --ifile = this means name of your input file
   -o , --ofile = this means name of your output file
   -s , --sword = this means word of your want to search and extract
+```
+
+- Example
+
+```
+  python3.5 main.py -i testInput.txt -o testOutput.txt -s //TODO
 ```
